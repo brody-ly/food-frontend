@@ -9,13 +9,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LetseatComponent implements OnInit {
 
+  food = {};
+
   constructor(private http: HttpClient){
   }
 
   ngOnInit() {
 
     this.http.get('http://128.199.202.116/food').subscribe(data => {
-      console.log(data);
+      this.food = data;
     });
   }
 

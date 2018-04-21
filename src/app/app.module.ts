@@ -8,6 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 const routes = [
   {
+    path: '',
+    redirectTo: 'letseat',
+    pathMatch: 'full',
+  },
+  {
       path: 'letseat',
       component: LetseatComponent
   },
@@ -23,7 +28,7 @@ const routes = [
     HttpClientModule,
     RouterModule.forRoot(
       routes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   providers: [],
