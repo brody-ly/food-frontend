@@ -13,6 +13,10 @@
         <p class="card-text">${{restaurant.average_cost_for_two}}</p>
         <p class="card-text">{{restaurant.cuisines}}</p>
         <p class="card-text"><small class="text-muted">{{restaurant.user_rating.aggregate_rating}}</small></p>
+        <form [formGroup] = "form" (ngSubmit)="onSubmit(this.form)">
+          <input type="hidden" name="name" value="{{restaurant.name}}">
+          <button type="submit" name="chadNation" class="btn btn-primary">Vote</button>        
+        </form>
       </div>
     </div>
   </ng-container>
