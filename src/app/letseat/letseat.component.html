@@ -1,26 +1,19 @@
-<div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title" *ngIf="food?.restaurants">{{food?.restaurants[0]?.name}}</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+<div class="card-deck" *ngIf="food?.restaurants">
+  <ng-container *ngFor="let restaurant of food.restaurants">
+    <div class="card">
+      <ng-container *ngIf="restaurant.thumb; else default">
+          <img class="card-img-top" src="{{restaurant.thumb}}" alt="Card image cap">
+      </ng-container>
+      <ng-template #default>
+        <img class="card-img-top" src="http://www.realdetroitweekly.com/wp-content/uploads/2017/06/Restaurants.jpg" alt="Default">
+      </ng-template>
+      <div class="card-body">
+        <h5 class="card-title">{{restaurant.name}}</h5>
+        <p class="card-text">{{restaurant.location.address}}</p>
+        <p class="card-text">${{restaurant.average_cost_for_two}}</p>
+        <p class="card-text">{{restaurant.cuisines}}</p>
+        <p class="card-text"><small class="text-muted">{{restaurant.user_rating.aggregate_rating}}</small></p>
+      </div>
     </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
+  </ng-container>
 </div>
